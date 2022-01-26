@@ -1,7 +1,10 @@
 import React,{useState,useRef} from 'react';
 import './SignUp.css'
+import VerifyEmail from './VerifyEmail';
 
 const SignUp = () => {
+
+    const [isVerify,setIsVerify]=useState(false);
 
     const inputEmailRef = useRef();
     const inputPassRef = useRef();
@@ -33,6 +36,8 @@ const SignUp = () => {
 
                 console.log('Successfully Registered')
                 alert('Successfully Registered')
+                setIsVerify(true)
+                return res.json()
             }
             else{
                 return res.json().then(data => {
@@ -40,6 +45,26 @@ const SignUp = () => {
                     alert(data.error.message)
                 })
             }
+        }).then((data)=>{
+            let id=data.idToken;
+            fetch("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCHIcla8YTW2njhNIm1eK4axItUfhbXMgA",{
+                method:'POST',
+                body:JSON.srtingify({
+                    requestType:"VERIFY_EMAIL",
+                    idToken:id,
+                }),
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            }).then(res=>{
+                if(res.ok){
+                    console.log("Otp sent");
+                }else{
+                    return res.json().then(data=>{
+                        alert("somehing went wrong")
+                    })
+                }
+            })
         })
 
     }
@@ -57,6 +82,10 @@ const SignUp = () => {
 
                 <button className='signupBtn' type='submit'>SignUp</button>
             </form>
+
+            <div className="verifyOtp">
+                {isVerify && <VerifyEmail/>}
+            </div>
         </div>
     );
 };
