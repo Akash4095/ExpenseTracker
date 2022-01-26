@@ -1,20 +1,32 @@
 .loginBody{
-    font-family: arial;
-  font-size: 24px;
-  margin: 25px;
-  width: 350px;
-  height: 200px;
-  outline: dashed 1px black;
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: 500px;
+  margin-left: 530px;
+  margin-top: 50px;
+  background-color: rgb(250, 250, 234);
 
 
 }
 
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
 .loginBtn{
     color: white;
+    margin: 10px 0px;
     background-color: turquoise;
     border-radius: 5px;
     border:none;
     margin-left: 2%;
     height: 25px;
+    width: 100px;
     cursor: pointer;
 } 

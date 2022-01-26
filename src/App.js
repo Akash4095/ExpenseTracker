@@ -5,6 +5,9 @@ import WelcomePage from "./components/Pages/WelcomePage";
 import Login from "./components/Pages/Login";
 import Header from "./components/Layout/Header";
 import ProfilePage from "./components/Pages/ProfilePage";
+import PasswordReset from "./components/Pages/PasswordReset";
+import EnterResetCode from "./components/Pages/EnterResetCode";
+import CreatingPassword from "./components/Pages/CreatingPassword";
 
 function App() {
 
@@ -14,7 +17,9 @@ function App() {
 
   useEffect(()=>{
 
-    fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCHIcla8YTW2njhNIm1eK4axItUfhbXMgA",{
+    if(localStorage.getItem("TokenIDExpense")){
+      setIsLogin(true)
+      fetch("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA5nYjPCDidltvXYlAkGXzCUR0CIOQBAOo",{
       method:'POST',
       body:JSON.stringify({
         idToken:localStorage.getItem("TokenIDExpense")
@@ -36,6 +41,7 @@ function App() {
     }).catch((err)=>{
       alert(err)
     })
+  }
 
   },[])
 
@@ -47,6 +53,9 @@ function App() {
         <Route exact path="/welcome" element={<WelcomePage />} />
         <Route exact path="/login" element={<Login setLogin={setIsLogin} />} />
         <Route exact path="/completeprofile" element={<ProfilePage inputName ={displayName} inputUrl ={photoUrl} />} />
+        <Route exact path = "/resetpassword" element = {<PasswordReset/>}/>
+        <Route exact path = "/enterrestcode" element = {<EnterResetCode/>}/>
+        <Route exact path = "/createpassword" element = {<CreatingPassword/>}/>
       </Routes>
       
     </>

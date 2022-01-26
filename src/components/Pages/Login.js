@@ -1,6 +1,6 @@
 import React,{useRef} from 'react';
 import './Login.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const Login = (props) => {
 
@@ -44,15 +44,37 @@ const Login = (props) => {
 
     }
 
+    // const forgotPasswordHandler=(event)=>{
+    //     event.preventDefault();
+
+    //     const enteredLoginEmail= inputLoginEmailRef.current.value;
+
+    //     fetch("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCHIcla8YTW2njhNIm1eK4axItUfhbXMgA",{
+    //         method:'POST',
+    //         body:JSON.stringify({
+    //             requestType:"PASSWORD_RESET",
+    //             email:enteredLoginEmail,
+    //         })
+    //     }).then(res=>{
+    //         if(res.ok){
+    //             alert("Forgot Password reset email sent");
+    //             return res.json();
+    //         }
+    //     })
+
+    // }
+
 
   return (
   <div className='loginBody'>
+  <h2>Login</h2>
       <form className='loginForm' onSubmit={loginSubmitHandler} >
           <label htmlFor="loginEmail">Email:</label> 
           <input type="email" id='loginEmail' required ref={inputLoginEmailRef} />
           <label htmlFor="loginPass">Password:</label>
           <input type="text" id='loginPass' required ref={inputLoginPassRef}  />
           <button type="submit" className='loginBtn'>Login</button>
+          <Link to="/resetpassword" >Forgot Password?</Link>
       </form>
   </div>
     );

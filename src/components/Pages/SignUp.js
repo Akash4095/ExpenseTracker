@@ -75,10 +75,10 @@ const SignUp = () => {
   return (
         <div className='signupBody'>
             <h2>SignUp</h2>
-            <form onSubmit={submitHandler}>
-                <input type="email" placeholder='Email' ref={inputEmailRef} required/>
-                <input type="password" placeholder='Password' ref={inputPassRef} required  />
-                <input type="password" placeholder='Confirm Password' ref={inputConfirmPassRef} required />
+            <form className='SignUpform' onSubmit={submitHandler}>
+                <input type="email" placeholder='Email' ref={inputEmailRef} required/><br />
+                <input type="password" placeholder='Password' ref={inputPassRef} required  /><br />
+                <input type="password" placeholder='Confirm Password' ref={inputConfirmPassRef} required /><br />
 
                 <button className='signupBtn' type='submit'>SignUp</button>
             </form>
