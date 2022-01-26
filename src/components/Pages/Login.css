@@ -1,0 +1,20 @@
+.loginBody{
+    font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  width: 350px;
+  height: 200px;
+  outline: dashed 1px black;
+
+
+}
+
+.loginBtn{
+    color: white;
+    background-color: turquoise;
+    border-radius: 5px;
+    border:none;
+    margin-left: 2%;
+    height: 25px;
+    cursor: pointer;
+} 

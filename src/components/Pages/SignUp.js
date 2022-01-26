@@ -84,7 +84,7 @@ const SignUp = () => {
             </form>
 
             <div className="verifyOtp">
-                {isVerify && <VerifyEmail/>}
+                {isVerify && <VerifyEmail verify={setIsVerify}/>}
             </div>
         </div>
     );
