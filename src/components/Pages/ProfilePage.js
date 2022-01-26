@@ -1,7 +1,7 @@
 import React,{useRef} from 'react';
 import './ProfilePage.css'
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
 
     const fullNameRef=useRef();
     const profileUrlRef=useRef();
@@ -43,10 +43,10 @@ const ProfilePage = () => {
     <div className='profile'>
         <form onSubmit={profileUpdateHandler} className='form'>
            <h2>Contact Details</h2> 
-           <label htmlFor="fullNmae">FullName:</label>
-           <input type="text" id='fullName' required ref={fullNameRef} />
+           <label htmlFor="fullName">FullName:</label>
+           <input type="text" id='fullName' required ref={fullNameRef}  placeholder={props.inputName} />
            <label htmlFor="profileURL">Profile Photo Url:</label>
-           <input type="text" id='profileURL' required ref={profileUrlRef}  />
+           <input type="text" id='profileURL' required ref={profileUrlRef} placeholder={props.inputUrl} />
            <button type='submit'>Update</button>
         </form>
     </div>
