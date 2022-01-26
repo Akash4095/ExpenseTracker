@@ -2,7 +2,7 @@ import React,{useRef} from 'react';
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
 
     const inputLoginEmailRef=useRef();
     const inputLoginPassRef=useRef();
@@ -34,6 +34,7 @@ const Login = () => {
             }
         }).then((data)=>{
             localStorage.setItem('TokenIDExpense',data.idToken)
+            props.setLogin(true)
             navigate('/welcome')
         
         }).catch((err)=>{
@@ -47,7 +48,7 @@ const Login = () => {
   return (
   <div className='loginBody'>
       <form className='loginForm' onSubmit={loginSubmitHandler} >
-          <label htmlFor="loginEmail">Email:</label>
+          <label htmlFor="loginEmail">Email:</label> 
           <input type="email" id='loginEmail' required ref={inputLoginEmailRef} />
           <label htmlFor="loginPass">Password:</label>
           <input type="text" id='loginPass' required ref={inputLoginPassRef}  />

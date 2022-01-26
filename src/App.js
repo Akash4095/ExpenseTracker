@@ -10,6 +10,7 @@ function App() {
 
   const [displayName,setDisplayName]=useState('');
   const [photoUrl,setPhotoUrl]=useState('')
+  const [isLogin,setIsLogin]=useState(false);
 
   useEffect(()=>{
 
@@ -40,11 +41,11 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header login={isLogin} setLogin={setIsLogin} />
       <Routes>
         <Route exact path="/" element={<SignUp />} />
         <Route exact path="/welcome" element={<WelcomePage />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/login" element={<Login setLogin={setIsLogin} />} />
         <Route exact path="/completeprofile" element={<ProfilePage inputName ={displayName} inputUrl ={photoUrl} />} />
       </Routes>
       
