@@ -1,0 +1,19 @@
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    padding: 30px;
+    width: 900px;
+    
+}
+
+.form{
+    padding: 20px;
+    margin: 20px;
+}
+
+.form input{
+    margin-right: 20px;
+    padding: 5px;
+}
