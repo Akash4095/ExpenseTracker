@@ -1,8 +1,11 @@
 import React,{useState,useRef} from 'react';
 import './SignUp.css'
 import VerifyEmail from './VerifyEmail';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+
+    const navigate=useNavigate();
 
     const [isVerify,setIsVerify]=useState(false);
 
@@ -37,6 +40,7 @@ const SignUp = () => {
                 console.log('Successfully Registered')
                 alert('Successfully Registered')
                 setIsVerify(true)
+                navigate('/login')
                 return res.json()
             }
             else{
@@ -58,6 +62,7 @@ const SignUp = () => {
                 }
             }).then(res=>{
                 if(res.ok){
+
                     console.log("Otp sent");
                 }else{
                     return res.json().then(data=>{
@@ -75,7 +80,7 @@ const SignUp = () => {
   return (
         <div className='signupBody'>
             <h2>SignUp</h2>
-            <form className='SignUpform' onSubmit={submitHandler}>
+            <form className='signUpform' onSubmit={submitHandler}>
                 <input type="email" placeholder='Email' ref={inputEmailRef} required/><br />
                 <input type="password" placeholder='Password' ref={inputPassRef} required  /><br />
                 <input type="password" placeholder='Confirm Password' ref={inputConfirmPassRef} required /><br />
@@ -84,7 +89,7 @@ const SignUp = () => {
             </form>
 
             <div className="verifyOtp">
-                {isVerify && <VerifyEmail verify={setIsVerify}/>}
+                {/* {isVerify && <VerifyEmail verify={setIsVerify}/>} */}
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Expenses from "../Expenses/Expense";
 
 const WelcomePage = () => {
   return (
@@ -12,6 +13,8 @@ const WelcomePage = () => {
           Your profile is Incomplete
         </p>
         <Link to="/completeprofile">Complete Now</Link>
+
+        <Expenses/>
      
     </>
   );

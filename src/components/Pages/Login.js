@@ -36,10 +36,12 @@ const Login = (props) => {
             localStorage.setItem('TokenIDExpense',data.idToken)
             props.setLogin(true)
             navigate('/welcome')
+            
         
         }).catch((err)=>{
             console.log("Something went Wrong");
         })
+
 
 
     }
@@ -69,10 +71,10 @@ const Login = (props) => {
   <div className='loginBody'>
   <h2>Login</h2>
       <form className='loginForm' onSubmit={loginSubmitHandler} >
-          <label htmlFor="loginEmail">Email:</label> 
-          <input type="email" id='loginEmail' required ref={inputLoginEmailRef} />
-          <label htmlFor="loginPass">Password:</label>
-          <input type="text" id='loginPass' required ref={inputLoginPassRef}  />
+          
+          <input type="email" placeholder='Email' required ref={inputLoginEmailRef} />
+          
+          <input type="password" placeholder='Password' required ref={inputLoginPassRef}  />
           <button type="submit" className='loginBtn'>Login</button>
           <Link to="/resetpassword" >Forgot Password?</Link>
       </form>

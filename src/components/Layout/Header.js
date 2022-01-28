@@ -15,7 +15,7 @@ const Header=(props)=>{
     return(
         <div className="header">
             <nav className="nav">
-                <Link to="/" className="home" >Home</Link>
+                <Link to="/" className="home" >SignUp</Link>
                 <Link to="login" >Login</Link>
 
                {props.login && <button className="btn" onClick={logoutHandler} >Logout</button>}

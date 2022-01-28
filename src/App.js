@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from "react";
+
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./components/Pages/SignUp";
 import WelcomePage from "./components/Pages/WelcomePage";
@@ -8,6 +9,7 @@ import ProfilePage from "./components/Pages/ProfilePage";
 import PasswordReset from "./components/Pages/PasswordReset";
 import EnterResetCode from "./components/Pages/EnterResetCode";
 import CreatingPassword from "./components/Pages/CreatingPassword";
+
 
 function App() {
 
@@ -56,7 +58,9 @@ function App() {
         <Route exact path = "/resetpassword" element = {<PasswordReset/>}/>
         <Route exact path = "/enterrestcode" element = {<EnterResetCode/>}/>
         <Route exact path = "/createpassword" element = {<CreatingPassword/>}/>
+        
       </Routes>
+      
       
     </>
   );
