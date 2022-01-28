@@ -5,10 +5,10 @@ const ExpenseList = (props) => {
         <div>
             {props.items.map((item) => {
                 return(
-                    <ul>
-                    <li>{item.money}{console.log(item.money)}</li>
-                    <li>{item.description} {console.log(`item.descript : ${item.description}`)} </li>
-                    <li>{item.category}</li>
+                    <ul key={item.id}>
+                    <li>Money Spent: {item.money}</li>
+                    <li>Description: {item.description} </li>
+                    <li>Category: {item.category}</li>
                 </ul>
                 )
 

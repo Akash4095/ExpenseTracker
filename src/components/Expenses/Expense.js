@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useRef, useState , useEffect } from "react";
 import ExpenseList from "./ExpenseList";
+import axios from "axios";
 
 const Expenses = () => {
   const dummyExpense = [
     {
+      id:'e1',
       money: "100",
       description: "For health and school",
       category: "salary",
@@ -16,6 +18,7 @@ const Expenses = () => {
   const inputExpenseDescriptionRef = useRef();
   const inputExpenseCategoryRef = useRef();
 
+    
   const expenseSubmitHandler = (event) => {
     event.preventDefault();
 
@@ -23,16 +26,37 @@ const Expenses = () => {
     const enteredExpenseDescription = inputExpenseDescriptionRef.current.value;
     const enteredExpenseCategory = inputExpenseCategoryRef.current.value;
 
-    setExpense((prevState) => {
-      return [
-        {
-          money: enteredExpenseMoney,
-          description: enteredExpenseDescription,
-          category: enteredExpenseCategory,
-        },
-        ...prevState,
-      ];
-    });
+    const newExpense =
+    {
+      money: enteredExpenseMoney,
+      description: enteredExpenseDescription,
+      category: enteredExpenseCategory,
+      id:Math.random().toString()
+    }
+
+    fetch("https://expensetracker-51d76-default-rtdb.firebaseio.com/Expenses.json", {
+      method: 'POST',
+      body: JSON.stringify(newExpense),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(res=>{
+      if(res.ok){
+        alert('data sent to the backend')
+        return res.json()
+      }
+      else{
+        return res.json((data)=>{
+          throw new Error(data.error.message)
+        })
+      }
+    }).then(
+      setExpense([newExpense,...expense])
+    ).catch(err=>{
+      alert(err.message)
+    })
+
     inputExpenseMoneyRef.current.value = "";
     inputExpenseCategoryRef.current.value = "";
     inputExpenseDescriptionRef.current.value = "";
@@ -62,9 +86,10 @@ const Expenses = () => {
         </select>
 
         <button type="submit">Submit</button>
+
       </form>
-      {console.log(`Expenses: ${expense}`)}
       
+
       <ExpenseList items={expense} />
     </div>
   );
