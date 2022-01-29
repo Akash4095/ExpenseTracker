@@ -52,15 +52,39 @@ const Expenses = () => {
         })
       }
     }).then(
-      setExpense([newExpense,...expense])
+      setExpense([newExpense,  ...expense])
     ).catch(err=>{
       alert(err.message)
     })
+
+   
 
     inputExpenseMoneyRef.current.value = "";
     inputExpenseCategoryRef.current.value = "";
     inputExpenseDescriptionRef.current.value = "";
   };
+
+  const deleteListHandler=(id)=>{
+    
+    const deleted= expense.filter((item)=> {return item.id !== id})
+    setExpense(deleted);
+
+   fetch(`https://expensetracker-51d76-default-rtdb.firebaseio.com/Expenses/${id}.json`,{
+     method:'DELETE',
+     headers: {
+      "Content-Type": "application/json",
+    },
+   }).then(res=>{
+     if(res.ok){
+       alert("Expense successfuly deleted")
+       return res.json()
+     }  else{
+      return res.json((data)=>{
+        throw new Error(data.error.message)
+      })
+    }
+   })
+  }
 
   return (
     <div>
@@ -90,7 +114,7 @@ const Expenses = () => {
       </form>
       
 
-      <ExpenseList items={expense} />
+      <ExpenseList items={expense} onclick={deleteListHandler} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ import ProfilePage from "./components/Pages/ProfilePage";
 import PasswordReset from "./components/Pages/PasswordReset";
 import EnterResetCode from "./components/Pages/EnterResetCode";
 import CreatingPassword from "./components/Pages/CreatingPassword";
+import EditExpense from "./components/Expenses/EditExpense";
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
         <Route exact path = "/resetpassword" element = {<PasswordReset/>}/>
         <Route exact path = "/enterrestcode" element = {<EnterResetCode/>}/>
         <Route exact path = "/createpassword" element = {<CreatingPassword/>}/>
-        
+        <Route exact path = '/editexpense/:id' element = {<EditExpense/>}/>
       </Routes>
       
       

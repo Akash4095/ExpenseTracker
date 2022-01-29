@@ -1,0 +1,30 @@
+.main{
+    
+    background-color: antiquewhite;
+    padding: 5px;
+}
+
+.ul{
+    display: flex;
+    background-color: rgb(186, 236, 240);
+     width: 80%;
+     
+}
+
+.ul li{
+    display: flex;
+
+    font-size: 20px;
+    padding: 5px;
+    flex-direction: column;
+    padding: 10px 40px;
+   
+}
+
+.btn{
+
+ margin-top: 10px;
+ margin-left: 200px;
+ height: 30px;
+
+}
