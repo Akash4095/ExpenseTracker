@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import './ExpenseList.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { expenseActions } from "../../store/expenseReducer";
@@ -11,6 +12,7 @@ const ExpenseList = (props) => {
     const navigate = useNavigate();
  
   const removeHandler = (tempkey, money) => {
+    
     console.log("tempk", tempkey);
 
     axios
@@ -51,19 +53,21 @@ const ExpenseList = (props) => {
 
 
   return (
-    <div>
+    <div className="main">
       
 
       {settingExpense.map((item) => {
         return (
-          <ul key={item.id}>
+          <ul key={item.id} className="ul">
            
+            <div className="li">
             <li>Money Spent: ${item.money}</li>
             <li>Description: {item.description} </li>
-            <li>Category: {item.category}</li>
+            <li>Categery: {item.category}</li>
+            </div>
             <button type="button" onClick = {()=> navigate(`/editexpense/${item.tempkey}`)}>Edit</button>
            
-            <button type="button" onClick={() => removeHandler(item.tempkey,item.money)}>
+            <button type="button" className="btn" onClick={() => removeHandler(item.tempkey,item.money)}>
               Delete
             </button>
           </ul>

@@ -4,6 +4,10 @@
     padding: 5px;
 }
 
+.li{
+    display: flex;
+}
+
 .ul{
     display: flex;
     background-color: rgb(186, 236, 240);

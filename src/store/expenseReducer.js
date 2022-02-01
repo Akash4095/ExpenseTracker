@@ -16,6 +16,7 @@ const expenseSlice = createSlice({
         console.log("action",action.payload)
       state.expense = [ ...action.payload ];
     },
+    
     addingExpense(state, action){
         state.expense = [...state.expense, action.payload]
     },

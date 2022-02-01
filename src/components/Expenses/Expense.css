@@ -1,0 +1,12 @@
+.totalexpense {
+  background-color: aliceblue;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 650px;
+  width: fit-content;
+}
+.btn{
+  margin: 10px;
+ background-color: blueviolet;
+  height: 30px;
+}

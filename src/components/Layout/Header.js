@@ -22,7 +22,7 @@ const Header=(props)=>{
                 <Link to="/" className="home" >SignUp</Link>
                 <Link to="login" >Login</Link>
 
-                {islogin && <button onClick={logoutHandler} type="button">Logout</button>}
+                {islogin && <button onClick={logoutHandler} className="btn" type="button">Logout</button>}
 
             </nav>
         </div>
