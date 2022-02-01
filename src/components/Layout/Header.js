@@ -1,14 +1,18 @@
 import React from "react"
 import {Link, useNavigate} from "react-router-dom";
 import './Header.css'
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/authReducer";
 
 const Header=(props)=>{
 
+    const islogin = useSelector(state=> state.auth.isAuthenticated)
+    const dispatch = useDispatch();
     const navigate=useNavigate();
 
     const logoutHandler=()=>{
         localStorage.removeItem("TokenIDExpense")
-        props.setLogin(false)
+        dispatch(authActions.logout())
         navigate('/login')
     }
 
@@ -18,7 +22,7 @@ const Header=(props)=>{
                 <Link to="/" className="home" >SignUp</Link>
                 <Link to="login" >Login</Link>
 
-               {props.login && <button className="btn" onClick={logoutHandler} >Logout</button>}
+                {islogin && <button onClick={logoutHandler} type="button">Logout</button>}
 
             </nav>
         </div>

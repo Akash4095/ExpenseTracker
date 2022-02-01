@@ -1,11 +1,14 @@
 import React,{useRef} from 'react';
 import './Login.css'
 import { useNavigate,Link } from 'react-router-dom';
-
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/authReducer";
 const Login = (props) => {
 
     const inputLoginEmailRef=useRef();
     const inputLoginPassRef=useRef();
+
+    const dispatch = useDispatch();
     let navigate=useNavigate();
 
     const loginSubmitHandler=(event)=>{
@@ -34,7 +37,7 @@ const Login = (props) => {
             }
         }).then((data)=>{
             localStorage.setItem('TokenIDExpense',data.idToken)
-            props.setLogin(true)
+            dispatch(authActions.login())
             navigate('/welcome')
             
         

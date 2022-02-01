@@ -19,7 +19,7 @@ const EditExpense = () => {
 
   const expenseEditHandler = (event) => {
     event.preventDefault();
-    const enteredEditMoney = inputEditCategoryRef.current.value;
+    const enteredEditMoney = inputEditMoneyRef.current.value;
     const enteredEditDescription = inputEditDescriptionRef.current.value;
     const enteredEditCategory = inputEditCategoryRef.current.value;
 
@@ -30,16 +30,29 @@ const EditExpense = () => {
       id: Math.random().toString(),
     };
 
-    axios
-      .put(
-        `https://expensetracker-c301c-default-rtdb.firebaseio.com/expenses/${editKey}.json`,
-        newEditExpense
-      )
-      .then((response) => {
-        console.log("resDelete", response.data);
+    fetch(
+      `https://expensetracker-51d76-default-rtdb.firebaseio.com/Expenses/${editKey}.json`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          money: enteredEditMoney,
+          description: enteredEditDescription,
+          category: enteredEditCategory,
+         
+        }),
+        headers: { "Content-Type": "application/json" },
+      }
+    ).then((res) => {
+      if (res.ok) {
+        alert("you edited successfully");
         navigate('/welcome')
-      });
-    };
+      } else {
+        return res.json().then((data) => {
+          console.log(data.error);
+        });
+      }
+    });
+  }
 
     return (
       <div>
